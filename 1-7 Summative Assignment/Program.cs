@@ -56,7 +56,7 @@ namespace _1_7_Summative_Assignment
 
                 do
                 {
-
+                    Console.WriteLine("You have " + money);
                     Console.WriteLine("How much are you betting");
                     double.TryParse(Console.ReadLine(), out bet);
 
@@ -80,6 +80,7 @@ namespace _1_7_Summative_Assignment
                 {
                     if (money <= 0)
                     {
+
                         Console.WriteLine("You don't have enough money to play. GAME OVER");
                         done = true;
                     }
@@ -133,6 +134,8 @@ namespace _1_7_Summative_Assignment
                     else if (handChoice == "scissor" || handChoice == "scissors" || handChoice == "s")
                     {
                         Console.WriteLine("You lose");
+
+                        money = money - bet;
                     }
                 }
                 else if (botHand == paper)
@@ -142,10 +145,14 @@ namespace _1_7_Summative_Assignment
                     if (handChoice == "scissor" || handChoice == "scissors" || handChoice == "s")
                     {
                         Console.WriteLine("You win");
+
+                        money = bet + money;
                     }
                     else if (handChoice == "rock" || handChoice == "r" || handChoice == "rocks")
                     {
                         Console.WriteLine("You lose");
+
+                        money = money - bet;
                     }
                     else if (handChoice == "paper" || handChoice == "p" || handChoice == "papers")
                     {
@@ -159,10 +166,14 @@ namespace _1_7_Summative_Assignment
                     if (handChoice == "rock" || handChoice == "rocks" || handChoice == "r")
                     {
                         Console.WriteLine("You win");
+
+                        money = bet + money;
                     }
                     else if (handChoice == "paper" || handChoice == "p" || handChoice == "papers")
                     {
                         Console.WriteLine("You lose");
+
+                        money = money - bet;
                     }
                     else if (handChoice == "scissor" || handChoice == "scissors" || handChoice == "s")
                     {
