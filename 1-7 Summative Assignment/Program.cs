@@ -18,8 +18,17 @@ namespace _1_7_Summative_Assignment
 
                 if (instruction == "r" || instruction == "rule")
                 {
-                    Console.WriteLine("Rules");
-                    Console.Read();
+                    Console.WriteLine("Rules:");
+                    Console.WriteLine("\t 1: You will begin the with a base cash amount of $50.00.");
+                    Console.WriteLine("\t 2: Your bet cannot exceed the total amount of cash you have");
+                    Console.WriteLine("\t 3: If you lose a game it will cause you to lose the money you bet with");
+                    Console.WriteLine("\t 4: If you win a game it will give you 2x the money you bet.");
+                    Console.WriteLine("\t 5: If you want to end the game simply type quit or q");
+                    Console.WriteLine("\t 6: If you run out of money, it will be a game over.");
+                    Console.WriteLine();
+                    Console.WriteLine("Press enter to start the game");
+                    Console.ReadLine();
+                    next = true;
                 }
                 else if (instruction == "enter" || instruction == "e")
                 {
@@ -56,10 +65,17 @@ namespace _1_7_Summative_Assignment
 
                 do
                 {
-                    Console.WriteLine("You have " + money);
+
+
+                    if (money <= 0)
+                    {
+
+                        Console.WriteLine("You don't have enough money to play. GAME OVER");
+                        return;  //Simplifies exiting console
+                    }
+                    Console.WriteLine("You have " + money.ToString("C"));
                     Console.WriteLine("How much are you betting");
                     double.TryParse(Console.ReadLine(), out bet);
-
                     if (bet > money)
                     {
                         Console.WriteLine("You do not have enough money to be that amount. Please try again.");
@@ -76,14 +92,8 @@ namespace _1_7_Summative_Assignment
                 Console.WriteLine("Rock (R), Paper (P), or Scissors (S)");
                 handChoice = Console.ReadLine().ToLower();
 
-                while (handChoice != "rock" &&  handChoice != "r" && handChoice != "paper" && handChoice != "p" && handChoice != "scissor" && handChoice != "s" && handChoice != "q" && handChoice != "quit")
+                while (handChoice != "rock" && handChoice != "r" && handChoice != "rocks" && handChoice != "paper" && handChoice != "p" && handChoice != "papers" && handChoice != "scissor" && handChoice != "s" && handChoice != "papers" && handChoice != "q" && handChoice != "papers" && handChoice != "quit")
                 {
-                    if (money <= 0)
-                    {
-
-                        Console.WriteLine("You don't have enough money to play. GAME OVER");
-                        done = true;
-                    }
                     Console.WriteLine();
                     Console.WriteLine("Error, you did not pick either of the choices you were given, please try again.");
                     handChoice = Console.ReadLine().ToLower();
@@ -121,6 +131,8 @@ namespace _1_7_Summative_Assignment
                 {
                     Console.WriteLine("I picked rock");
 
+                    pickRock();
+
                     if (handChoice == "paper" || handChoice == "p" || handChoice == "papers")
                     {
                         Console.WriteLine("You win");
@@ -141,6 +153,8 @@ namespace _1_7_Summative_Assignment
                 else if (botHand == paper)
                 {
                     Console.WriteLine("I picked paper");
+
+                    pickPaper();
 
                     if (handChoice == "scissor" || handChoice == "scissors" || handChoice == "s")
                     {
@@ -163,6 +177,8 @@ namespace _1_7_Summative_Assignment
                 {
                     Console.WriteLine("I picked scissor");
 
+                    pickScissor();
+
                     if (handChoice == "rock" || handChoice == "rocks" || handChoice == "r")
                     {
                         Console.WriteLine("You win");
@@ -181,6 +197,36 @@ namespace _1_7_Summative_Assignment
                     }
                 }
             }
+        }
+
+        public static void pickRock()
+        {
+            Console.WriteLine("    _______");
+            Console.WriteLine("---'   ____)");
+            Console.WriteLine("      (_____)");
+            Console.WriteLine("      (_____)");
+            Console.WriteLine("      (____)\r\n");
+            Console.WriteLine("---.__(___)\r\n");
+        }
+
+        public static void pickPaper()
+        {
+            Console.WriteLine("    _______\r\n");
+            Console.WriteLine("---'   ____)______");
+            Console.WriteLine("          ________)");
+            Console.WriteLine("          _________)");
+            Console.WriteLine("         _________)");
+            Console.WriteLine("---.____________)");
+        }
+
+        public static void pickScissor()
+        {
+            Console.WriteLine("    _______\r\n")
+            Console.WriteLine("---'   ____)_____");
+            Console.WriteLine("          _______)");
+            Console.WriteLine("       ___________)");
+            Console.WriteLine("      (____)");
+            Console.WriteLine("---.__(___)");
         }
     }
 }
